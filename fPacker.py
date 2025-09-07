@@ -57,17 +57,17 @@ class App(CTk):
         self.itemNumber=0
         self.click=0
         menubar=tk.Menu(master=self.master)
-        packing = tk.Menu(menubar, tearoff=0)
-        packing.add_command(label="Pack Files",command=self.showPackingOptions)
-        packing.add_separator()
-        packing.add_command(label="Unpack Files")
+        fileCompress = tk.Menu(menubar, tearoff=0)
+        fileCompress.add_command(label="Pack Files",command=self.showPackingOptions)
+        fileCompress.add_separator()
+        fileCompress.add_command(label="Unpack Files")
         self.config(menu=menubar)
-        formats=tk.Menu(menubar,tearoff=0)
-        formats.add_command(label="Compress image",command=self.imageCompress)
+        imageCompress=tk.Menu(menubar,tearoff=0)
+        imageCompress.add_command(label="Compress image",command=self.imageCompress)
 
 
-        menubar.add_cascade(label="Start",menu=packing)
-        menubar.add_cascade(label="Image compression",menu=formats)
+        menubar.add_cascade(label="File compression",menu=fileCompress)
+        menubar.add_cascade(label="Image compression",menu=imageCompress)
     
     def showPackingOptions(self):
         self.zipCB.grid(row=2,column=0,sticky="W")
@@ -187,11 +187,6 @@ class App(CTk):
         nowStr = now.strftime("%Y%m%d%H%M%S")
         picture.save("Compressed"+nowStr+".jpg", optimize = True, quality = qualityValue)
 
-
-
-
- 
- 
 app = App()
 app.geometry("500x500")
 app.mainloop()
